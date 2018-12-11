@@ -25,6 +25,8 @@ Then it's easy to spot the diff in a Pull Request 👀
 
 <img width="700" src="media/screenshot-PR.png" alt="Pull Request screenshot">
 
+⚠️ **Warning**: Make sure to build your up before running the command: `yarn build`
+
 ### Options:
 
 ```bash
