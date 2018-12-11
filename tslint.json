@@ -1,3 +1,15 @@
 {
-  "extends": "@oclif/tslint"
+	"extends": ["tslint:latest", "tslint-config-prettier"],
+	"rules": {
+		"interface-name": [true, "never-prefix"],
+		"interface-over-type-literal": false,
+		"jsx-no-lambda": false,
+		"jsx-no-multiline-js": false,
+		"no-submodule-imports": false,
+		"no-unused-variable": [true, { "check-parameters": true }],
+		"ordered-imports": false,
+		"member-access": false,
+		"object-literal-sort-keys": false,
+		"curly": false
+	}
 }
