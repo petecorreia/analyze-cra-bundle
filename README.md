@@ -9,7 +9,7 @@ analyze-cra-bundle
 
 ### Keep an eye on your bundle size 📦
 
-Assess impact of any code on the bundle size directly in your Pull Request changes 🔎
+Assess impact of any code on the bundle size directly in your Pull Request changes. 🔎
 
 # Usage
 
@@ -17,13 +17,15 @@ Assess impact of any code on the bundle size directly in your Pull Request chang
 $ analyze-cra-bundle
 ```
 
-Generates a report at `.reports/build-analysis.json`. Check the file into git to track changes to bundle size when compared to latest master 🎉
+Generates a report at `.reports/build-analysis.json`. Check the file into git to track changes to bundle size when compared to latest master. 🎉
 
 <img width="435" src="media/screenshot-output.png" alt="Output screenshot">
 
-Then it's easy to spot the diff in a Pull Request 👀
+Then it's easy to spot the diff in a Pull Request. 👀
 
 <img width="700" src="media/screenshot-PR.png" alt="Pull Request screenshot">
+
+Here's an [example](.reports/build-analysis.json).
 
 ⚠️ **Warning**: Make sure to build your app before running the command: `yarn build`
 
