@@ -11,6 +11,8 @@ analyze-cra-bundle
 
 Assess impact of any code on the bundle size directly in your Pull Request changes. 🔎
 
+*This package is in its early stages. More features on the way. Suggestions welcome!*
+
 # Usage
 
 ```bash
