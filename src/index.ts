@@ -2,6 +2,16 @@ import { Command, flags } from '@oclif/command';
 import * as fs from 'fs';
 import * as gzipSize from 'gzip-size';
 import * as glob from 'glob';
+import * as execa from 'execa';
+
+type Analysis = {
+	size: number;
+	diff?: number;
+	pretty?: {
+		size: string;
+		diff: string;
+	};
+};
 
 class AnalyzeCraBundle extends Command {
 	static description = 'Analyzes your CRA bundle';
@@ -9,7 +19,7 @@ class AnalyzeCraBundle extends Command {
 	static flags = {
 		version: flags.version({ char: 'v' }),
 		help: flags.help({ char: 'h' }),
-		output: flags.string({ char: 'o', default: 'build-analysis.json' }),
+		branch: flags.string({ char: 'b', default: 'master' }),
 	};
 
 	static args = [{ name: 'pathToBuildFolder', default: 'build' }];
@@ -17,20 +27,15 @@ class AnalyzeCraBundle extends Command {
 	async run() {
 		const {
 			args: { pathToBuildFolder },
-			flags: { output = 'build-analysis.json' },
+			flags: { branch = 'master' },
 		} = this.parse(AnalyzeCraBundle);
+
+		const outputFolder = '.reports';
+		const outputFileName = 'build-analysis.json';
+		const output = `${outputFolder}/${outputFileName}`;
 
 		if (!pathToBuildFolder) {
 			this.error('No path to build folder specified specified. e.g. analyze-cra-bundle ./build');
-		}
-
-		let history: number[];
-
-		try {
-			const previousAnalysis = JSON.parse(fs.readFileSync(output, 'utf8'));
-			history = previousAnalysis.history || [0];
-		} catch {
-			history = [0];
 		}
 
 		const files = glob.sync(pathToBuildFolder + '/static/js/*.js');
@@ -40,13 +45,34 @@ class AnalyzeCraBundle extends Command {
 		}
 
 		const size = files.reduce((t, f) => (t += (gzipSize as any).fileSync(f)), 0);
-		const previousSize = history[history.length - 1];
-		const increase = size - previousSize;
 
-		this.log(formatBytes(size));
-		this.log(formatBytes(increase));
+		let previousAnalysis: Analysis;
 
-		fs.writeFileSync(output, JSON.stringify({ size, increase }, null, 2), 'utf8');
+		try {
+			previousAnalysis = JSON.parse(await execa.stdout('git', ['cat-file', 'blob', `${branch}:${output}`]));
+		} catch {
+			previousAnalysis = {
+				size: 0,
+			};
+		}
+
+		const increase = size - previousAnalysis.size;
+
+		const analysis: Analysis = {
+			size,
+			diff: increase,
+			pretty: {
+				size: formatBytes(size),
+				diff: formatBytes(increase),
+			},
+		};
+
+		this.log(analysis as any);
+
+		if (!fs.existsSync(outputFolder)) {
+			fs.mkdirSync(outputFolder);
+		}
+		fs.writeFileSync(output, JSON.stringify(analysis, null, 2), 'utf8');
 
 		this.exit();
 	}
