@@ -1,6 +1,6 @@
 {
   "name": "analyze-cra-bundle",
-  "description": "Analyzes your CRA bundle stats",
+  "description": "Analyzes your CRA build bundle stats",
   "version": "0.0.0",
   "author": "Pete Correia @petecorreia",
   "bin": {
@@ -17,17 +17,11 @@
     "tslib": "^1"
   },
   "devDependencies": {
-    "@oclif/test": "^1",
     "@oclif/tslint": "^3",
-    "@types/chai": "^4",
     "@types/execa": "^0.9.0",
     "@types/glob": "^7.1.1",
     "@types/gzip-size": "^4.1.0",
-    "@types/mocha": "^5",
     "@types/node": "^10",
-    "chai": "^4",
-    "mocha": "^5",
-    "nyc": "^13",
     "ts-node": "^7",
     "tslint": "^5",
     "tslint-config-prettier": "^1.17.0",
@@ -51,9 +45,7 @@
   },
   "repository": "petecorreia/analyze-cra-bundle",
   "scripts": {
-    "posttest": "tslint -p test -t stylish",
-    "prepack": "rm -rf lib && tsc -b",
-    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\""
+    "prepack": "rm -rf lib && tsc -b"
   },
   "types": "lib/index.d.ts"
 }
