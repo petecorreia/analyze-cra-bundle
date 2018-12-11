@@ -1,17 +1,23 @@
 analyze-cra-bundle
 ==================
 
-Analyzes your CRA bundle stats
-
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/analyze-cra-bundle.svg)](https://npmjs.org/package/analyze-cra-bundle)
-[![CircleCI](https://circleci.com/gh/petecorreia/analyze-cra-bundle/tree/master.svg?style=shield)](https://circleci.com/gh/petecorreia/analyze-cra-bundle/tree/master)
-[![Codecov](https://codecov.io/gh/petecorreia/analyze-cra-bundle/branch/master/graph/badge.svg)](https://codecov.io/gh/petecorreia/analyze-cra-bundle)
 [![Downloads/week](https://img.shields.io/npm/dw/analyze-cra-bundle.svg)](https://npmjs.org/package/analyze-cra-bundle)
 [![License](https://img.shields.io/npm/l/analyze-cra-bundle.svg)](https://github.com/petecorreia/analyze-cra-bundle/blob/master/package.json)
 
-<!-- toc -->
+
+Analyzes your CRA build bundle stats 🚀
+
+Useful for PRs and feature branches as it diffs gzipped bundle sizes with master branch.
+
 # Usage
-<!-- usage -->
-# Commands
-<!-- commands -->
+
+Assuming default CRA, just run at project root:
+
+```
+analyze-cra-bundle
+```
+
+This will generate a report in `.reports/build-analysis.json` which you should check into git to track changes to bundle size when compared to latest master 🎉
+
