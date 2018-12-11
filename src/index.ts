@@ -7,10 +7,7 @@ import * as execa from 'execa';
 type Analysis = {
 	size: number;
 	diff?: number;
-	pretty?: {
-		size: string;
-		diff: string;
-	};
+	diffPct?: number;
 };
 
 class AnalyzeCraBundle extends Command {
@@ -56,15 +53,13 @@ class AnalyzeCraBundle extends Command {
 			};
 		}
 
-		const increase = size - previousAnalysis.size;
+		const diff = size - previousAnalysis.size;
+		const diffPct = (diff / size) * 100;
 
 		const analysis: Analysis = {
 			size,
-			diff: increase,
-			pretty: {
-				size: formatBytes(size),
-				diff: formatBytes(increase),
-			},
+			diff,
+			diffPct,
 		};
 
 		this.log(analysis as any);
@@ -76,15 +71,6 @@ class AnalyzeCraBundle extends Command {
 
 		this.exit();
 	}
-}
-
-function formatBytes(bytes: number, decimals?: number): string {
-	if (bytes === 0) return '0 Bytes';
-	const k = 1024;
-	const dm = !decimals || decimals <= 0 ? 0 : decimals || 2;
-	const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-	const i = Math.floor(Math.log(bytes) / Math.log(k));
-	return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 }
 
 export = AnalyzeCraBundle;
