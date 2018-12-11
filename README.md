@@ -7,27 +7,27 @@ analyze-cra-bundle
 [![License](https://img.shields.io/npm/l/analyze-cra-bundle.svg)](https://github.com/petecorreia/analyze-cra-bundle/blob/master/package.json)
 
 
-Analyzes your Create React App bundle 🚀
+### Keep an eye on your bundle size 📦
 
-This differs from similar tools as it makes use of versioning to assess code impact on bundle in your Pull Requests 🔎
-
+Assess impact of any code on the bundle size directly in your Pull Request changes 🔎
 
 # Usage
-
-Just run this is your CRA project:
 
 ```bash
 $ analyze-cra-bundle
 ```
 
-This will generate a report in `.reports/build-analysis.json` which you should definitely check into git to track changes to bundle size when compared to latest master 🎉
+Generates a report at `.reports/build-analysis.json`. Check the file into git to track changes to bundle size when compared to latest master 🎉
 
-Options (in case you need them):
+<img width="435" src="media/screenshot-output.png" alt="Output screenshot">
+
+Then it's easy to spot the diff in a Pull Request 👀
+
+<img width="700" src="media/screenshot-PR.png" alt="Pull Request screenshot">
+
+### Options:
 
 ```bash
-// --branch — branch to compare. defaults to `master`
-// arg — build path. defaults to `build`
-
-$ analyze-cra-bundle --branch=master build
+$ analyze-cra-bundle --branch=master path/to/build/folder
 ```
 
