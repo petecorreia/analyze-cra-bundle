@@ -7,7 +7,7 @@ analyze-cra-bundle
 [![License](https://img.shields.io/npm/l/analyze-cra-bundle.svg)](https://github.com/petecorreia/analyze-cra-bundle/blob/master/package.json)
 
 
-### Keep an eye on your bundle size 📦
+### Keep an eye on your Create React App bundle size 📦
 
 Assess impact of any code on the bundle size directly in your Pull Request changes. 🔎
 
