@@ -38,7 +38,7 @@ OPTIONS
 
 Keep an eye on the bundle size in your Pull Requests with a extra status check 👀
 
-<img width="700" src="media/screenshot-PR.png" alt="Pull Request screenshot">
+<img width="900" src="media/screenshot-PR.png" alt="Pull Request screenshot">
 
 -   Add a Github Access Token as `ANALYZE_CRA_GITHUB_TOKEN` to your environment variables in the TravisCI project settings.
 -   Add `"bundlesize": "analyze-cra-bundle"` to your `package.json`
