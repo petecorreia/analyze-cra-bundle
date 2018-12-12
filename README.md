@@ -28,14 +28,8 @@ OPTIONS
   -v, --version                          show version
 ```
 
-Generates a report at `.analysis/size.json`. Check the file into git to track changes to bundle size when compared to latest master. 🎉
-
 <img width="435" src="media/screenshot-output.png" alt="Output screenshot">
 
 Then it's easy to spot the diff in a Pull Request. 👀
-
-<img width="700" src="media/screenshot-PR.png" alt="Pull Request screenshot">
-
-Here's an [example](.analysis/size.json).
 
 ⚠️ **Warning**: Make sure to build your app before running the command: `yarn build`
