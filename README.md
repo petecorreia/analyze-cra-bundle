@@ -7,9 +7,11 @@
 
 ### Keep an eye on your Create React App bundle size 📦
 
-Assess impact of new code/deps on the end-user initial bundle size directly in your Pull Request changes. 🔎
+Assess impact of new code/deps on the end-user initial bundle size and monitor it directly in your Pull Request changes via TravisCI. 🔎
 
-_This package is in its early stages. More features on the way. Suggestions welcome!_
+It makes sure to track only CRA JS chunks present in index.html.
+
+ℹ️ _This package is in its early stages. More features on the way. Suggestions welcome!_
 
 # Installation
 
@@ -30,6 +32,14 @@ OPTIONS
 
 <img width="435" src="media/screenshot-output.png" alt="Output screenshot">
 
-Then it's easy to spot the diff in a Pull Request. 👀
+⚠️ **Warning**: Make sure to build your app before running the command: `yarn build && analyze-cra-bundle`
 
-⚠️ **Warning**: Make sure to build your app before running the command: `yarn build`
+# TravisCI Integration
+
+Keep an eye on the bundle size in your Pull Requests with a extra status check 👀
+
+<img width="700" src="media/screenshot-PR.png" alt="Pull Request screenshot">
+
+-   Add a Github Access Token as `ANALYZE_CRA_GITHUB_TOKEN` to your environment variables in the TravisCI project settings.
+-   Add `"bundlesize": "analyze-cra-bundle"` to your `package.json`
+-   Add `yarn bundlesize` to your `script:` in `.travis.yml`
