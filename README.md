@@ -25,10 +25,10 @@ $ analyze-cra-bundle
 OPTIONS
   -b, --branch=branch                  [default: master]
   -f, --buildFolder=buildFolder        [default: build]
-  -h, --help                           show CLI help
-  -n, --outputFileName=outputFileName  [default: size.json]
   -o, --outputFolder=outputFolder      [default: .analysis]
-  -v, --version                        show CLI version
+  -n, --outputFileName=outputFileName  [default: size.json]
+  -h, --help                           show help
+  -v, --version                        show version
 ```
 
 Generates a report at `.analysis/size.json`. Check the file into git to track changes to bundle size when compared to latest master. 🎉
