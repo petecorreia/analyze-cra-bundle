@@ -23,12 +23,9 @@ $ yarn add --dev analyze-cra-bundle
 $ analyze-cra-bundle
 
 OPTIONS
-  -b, --branch=branch                  [default: master]
-  -f, --buildFolder=buildFolder        [default: build]
-  -o, --outputFolder=outputFolder      [default: .analysis]
-  -n, --outputFileName=outputFileName  [default: size.json]
-  -h, --help                           show help
-  -v, --version                        show version
+  -f, --buildFolderPath=buildFolderPath  [default: build]
+  -h, --help                             show help
+  -v, --version                          show version
 ```
 
 Generates a report at `.analysis/size.json`. Check the file into git to track changes to bundle size when compared to latest master. 🎉

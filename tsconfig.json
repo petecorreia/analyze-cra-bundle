@@ -3,6 +3,7 @@
     "declaration": true,
 	"importHelpers": true,
 	"allowSyntheticDefaultImports": true,
+	"skipLibCheck": true,
     "module": "commonjs",
     "outDir": "lib",
     "rootDir": "src",
