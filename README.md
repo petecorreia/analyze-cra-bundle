@@ -43,3 +43,5 @@ Keep an eye on the bundle size in your Pull Requests with a extra status check ð
 -   Add a Github Access Token as `ANALYZE_CRA_GITHUB_TOKEN` to your environment variables in the TravisCI project settings.
 -   Add the script `"bundlesize": "analyze-cra-bundle"` to your `package.json` scripts
 -   Add `  - yarn bundlesize` to your `.travis.yml` within `script:`
+
+*(Create an issue if you're having trouble with this!)*
