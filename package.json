@@ -1,7 +1,7 @@
 {
   "name": "analyze-cra-bundle",
   "description": "Analyzes your CRA build bundle stats",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Pete Correia @petecorreia",
   "bin": {
     "analyze-cra-bundle": "./bin/run"
