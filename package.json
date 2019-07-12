@@ -24,7 +24,7 @@
     "@types/execa": "^0.9.0",
     "@types/glob": "^7.1.1",
     "@types/gzip-size": "^4.1.0",
-    "@types/node": "^10",
+    "@types/node": "^12",
     "ts-node": "^7",
     "tslint": "^5",
     "tslint-config-prettier": "^1.17.0",
