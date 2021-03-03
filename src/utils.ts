@@ -1,6 +1,5 @@
 import Command from '@oclif/command'
-import { ReposCreateStatusParams } from '@octokit/rest'
-const { octokit } = require('@octokit/rest')()
+import { Octokit } from '@octokit/rest'
 
 type EventType = 'push' | 'pull_request' | 'api' | 'cron'
 
@@ -33,7 +32,11 @@ export async function setStatus({
 	const owner = parsedSlug[0]
 	const repo = parsedSlug[1]
 
-	const params: ReposCreateStatusParams = {
+	const octokit = new Octokit({
+		auth: ANALYZE_CRA_GITHUB_TOKEN,
+	})
+
+	await octokit.repos.createCommitStatus({
 		owner,
 		repo,
 		sha,
@@ -41,14 +44,7 @@ export async function setStatus({
 		target_url: TRAVIS_JOB_WEB_URL,
 		description,
 		context,
-	}
-
-	octokit.authenticate({
-		type: 'oauth',
-		token: ANALYZE_CRA_GITHUB_TOKEN,
 	})
-
-	await octokit.repos.createStatus(params)
 }
 
 function getCommitSha(eventType: EventType, command: Command) {

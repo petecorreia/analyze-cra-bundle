@@ -1,9 +1,8 @@
 import { Command, flags } from '@oclif/command'
 import * as fs from 'fs'
 import * as gzipSize from 'gzip-size'
-import * as execa from 'execa'
-import chalk from 'chalk'
 import { setStatus, generateSpaces, formatBytes } from './utils'
+const chalk = require('chalk')
 
 class AnalyzeCraBundle extends Command {
 	static description = 'Analyzes your CRA bundle'
@@ -31,7 +30,6 @@ class AnalyzeCraBundle extends Command {
 			this.error(
 				`Build folder '${buildFolderPath}' does not exist.\n\nMaybe tweak your build path?\nanalyze-cra-bundle -f path/to/build/folder`
 			)
-			return
 		}
 
 		const fileMatches = indexFile.match(/src="\/static\/js.*?\.js"/gi)
@@ -48,7 +46,6 @@ class AnalyzeCraBundle extends Command {
 		this.log(chalk.magentaBright('index.html:'))
 
 		const size = files.reduce((t, f) => {
-			// @ts-ignore - gzipSize is missing fileSync in its type but it exists
 			const gzippedSize = gzipSize.fileSync(buildFolderPath + f)
 			const spaces = generateSpaces(Math.max(35 - f.length, 2))
 			const filename = f.replace('/static/js/', '')
