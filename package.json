@@ -1,10 +1,10 @@
 {
   "name": "analyze-cra-bundle",
   "description": "Analyzes your CRA build bundle stats",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": "Pete Correia @petecorreia",
   "bin": {
-    "analyze-cra-bundle": "./bin/run"
+    "analyze-cra-bundle": "bin/run"
   },
   "bugs": "https://github.com/petecorreia/analyze-cra-bundle/issues",
   "dependencies": {
